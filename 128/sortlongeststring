@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        unordered_set<int>s;
+        for(const int&num:nums){
+            s.insert(num);
+        }
+        int longstring=0;
+        for(const int&num:s){
+            if(!s.count(num-1)){
+                int currnum=num;
+                int currlong=1;
+            
+            while(s.count(currnum+1)){
+                currnum+=1;
+                currlong+=1;
+            }
+            longstring=max(longstring,currlong);
+        }}
+        return longstring;
+    }
+};
