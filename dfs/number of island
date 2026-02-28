@@ -1,0 +1,30 @@
+class Solution {
+public:
+//标记所有岛屿
+void dfs(vector<vector<char>>&grid,int i,int j){
+    if(i<0||i>=grid.size()||j<0||j>=grid[0].size()||grid[i][j]!='1'){
+        return;
+    }
+    
+        grid[i][j]='2';
+    
+    dfs(grid,i+1,j);
+    dfs(grid,i,j-1);
+    dfs(grid,i-1,j);
+    dfs(grid,i,j+1);
+
+}
+    int numIslands(vector<vector<char>>& grid) {
+        int count=0;
+        for(int m=0;m<grid.size();m++){
+            for(int n=0;n<grid[0].size();n++){
+                if(grid[m][n]=='1'){
+                    dfs(grid,m,n);
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+    
+};
